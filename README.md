@@ -328,5 +328,5 @@ MIT License - 자세한 내용은 [LICENSE](LICENSE) 파일을 참조하세요.
 
 ## 📞 문의
 
-- Email: support@all-ad.com
-- Website: https://all-ad.com
+- Email: support@all-ad.com / sivera@sivera.app
+- Website: https://all-ad.com / https://sivera.app

@@ -124,7 +124,7 @@ export function ConsentManager({
       <CardHeader className="flex flex-col gap-1 pb-6">
         <h2 className="text-2xl font-bold">광고 계정 접근 권한</h2>
         <p className="text-small text-default-500">
-          올애드가 광고 계정에 접근하기 위해 필요한 권한입니다. 선택한 플랫폼에
+          Sivera가 광고 계정에 접근하기 위해 필요한 권한입니다. 선택한 플랫폼에
           대해서만 접근 권한이 부여됩니다.
         </p>
       </CardHeader>
@@ -204,7 +204,7 @@ export function ConsentManager({
             <li className="flex items-start gap-2">
               <span className="text-primary mt-0.5">•</span>
               <span>
-                올애드는 승인된 권한 범위 내에서만 데이터에 접근합니다.
+                Sivera는 승인된 권한 범위 내에서만 데이터에 접근합니다.
               </span>
             </li>
             <li className="flex items-start gap-2">
@@ -240,7 +240,7 @@ export function ConsentManager({
 
         {/* 법적 고지 */}
         <p className="text-xs text-default-400 text-center mt-4">
-          계속 진행하면 올애드의{" "}
+          계속 진행하면 Sivera의{" "}
           <Link className="text-primary hover:underline" href="/terms">
             이용약관
           </Link>{" "}

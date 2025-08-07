@@ -92,7 +92,7 @@ export const Navbar = () => {
               className="flex justify-start items-center gap-1"
               href="/"
             >
-              <p className="font-bold text-inherit text-xl">A.ll + Ad</p>
+              <p className="font-bold text-inherit text-xl">Sivera</p>
             </NextLink>
           </NavbarBrand>
           <ul className="hidden lg:flex gap-4 justify-start ml-8">
