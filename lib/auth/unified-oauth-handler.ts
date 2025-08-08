@@ -6,7 +6,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 import { createClient } from "@/utils/supabase/server";
 import { createServiceClient } from "@/utils/supabase/service";
-import { getAllAdOAuthConfig } from "@/lib/oauth/platform-configs";
+import { getSiveraOAuthConfig } from "@/lib/oauth/platform-configs";
 import { OAUTH_CONFIGS } from "@/lib/auth/oauth-handlers";
 import { PlatformType } from "@/types";
 import log from "@/utils/logger";
@@ -180,9 +180,9 @@ async function buildOAuthUrl(
   // Get platform configuration
   const override = PLATFORM_OVERRIDES[platform];
 
-  // For Google, use All-AD's OAuth config
+  // For Google, use Sivera's OAuth config
   if (platform === "google") {
-    const oauthConfig = await getAllAdOAuthConfig("google");
+    const oauthConfig = await getSiveraOAuthConfig("google");
 
     if (!oauthConfig) {
       throw new Error("Google OAuth config not found");

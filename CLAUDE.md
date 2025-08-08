@@ -16,7 +16,7 @@ Next.js 15 multi-tenant advertising platform integrating multiple ad platforms (
 ### Working Directory
 
 ```
-/Users/2309-n0015/Code/Project/all-ad
+/Users/2309-n0015/Code/Project/sivera
 ```
 
 ### Core Guidelines

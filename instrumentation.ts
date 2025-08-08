@@ -2,7 +2,7 @@ import { registerOTel } from "@vercel/otel";
 
 export function register() {
   registerOTel({
-    serviceName: "all-ad-platform",
+    serviceName: "sivera-platform",
     instrumentationConfig: {
       fetch: {
         ignoreUrls: [

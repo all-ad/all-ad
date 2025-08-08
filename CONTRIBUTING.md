@@ -1,6 +1,6 @@
-# Contributing to All-AD
+# Contributing to Sivera
 
-모든 기여를 환영합니다! 이 문서는 All-AD 프로젝트에 기여하는 방법을 설명합니다.
+모든 기여를 환영합니다! 이 문서는 Sivera 프로젝트에 기여하는 방법을 설명합니다.
 
 ## 📋 목차
 
@@ -38,11 +38,11 @@
 ```bash
 # 1. GitHub에서 저장소를 포크합니다
 # 2. 포크한 저장소를 로컬에 클론합니다
-git clone https://github.com/YOUR_USERNAME/all-ad.git
-cd all-ad
+git clone https://github.com/YOUR_USERNAME/sivera.git
+cd sivera
 
 # 3. 원본 저장소를 upstream으로 추가합니다
-git remote add upstream https://github.com/seongpil0948/all-ad.git
+git remote add upstream https://github.com/seongpil0948/sivera.git
 ```
 
 ### 2. 의존성 설치
@@ -571,7 +571,7 @@ git push origin main --force
 
 ## 🎉 기여해주셔서 감사합니다!
 
-여러분의 기여가 All-AD를 더 나은 프로젝트로 만듭니다. 질문이나 제안사항이 있으시면 언제든지 이슈를 생성해 주세요.
+여러분의 기여가 Sivera를 더 나은 프로젝트로 만듭니다. 질문이나 제안사항이 있으시면 언제든지 이슈를 생성해 주세요.
 
 ---
 
@@ -579,4 +579,4 @@ git push origin main --force
 
 - [README.md](./README.md) - 프로젝트 개요
 - [docs/](./docs/) - 상세 문서
-- [GitHub Issues](https://github.com/seongpil0948/all-ad/issues) - 버그 리포트 및 기능 제안
+- [GitHub Issues](https://github.com/seongpil0948/sivera/issues) - 버그 리포트 및 기능 제안

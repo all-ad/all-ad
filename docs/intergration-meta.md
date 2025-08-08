@@ -1,6 +1,6 @@
-# Meta 광고 플랫폼 통합 가이드: 올애드를 위한 실무 전략
+# Meta 광고 플랫폼 통합 가이드: Sivera를 위한 실무 전략
 
-Meta 광고 플랫폼(Facebook/Instagram Business)을 통합하려면 **System User 기반의 서버 사이드 아키텍처**를 구축하고, Marketing API v23.0을 활용하여 안정적인 광고 관리 시스템을 구현해야 합니다. 본 가이드는 2025년 6월 기준 최신 정보를 바탕으로 올애드 플랫폼에서 Meta 광고를 효과적으로 통합하기 위한 모든 기술적, 규제적 요구사항을 다룹니다. 특히 한국 시장의 개인정보보호법(PIPA) 준수와 iOS 14+ 환경에서의 추적 정확도 향상에 중점을 두었습니다.
+Meta 광고 플랫폼(Facebook/Instagram Business)을 통합하려면 **System User 기반의 서버 사이드 아키텍처**를 구축하고, Marketing API v23.0을 활용하여 안정적인 광고 관리 시스템을 구현해야 합니다. 본 가이드는 2025년 6월 기준 최신 정보를 바탕으로 Sivera 플랫폼에서 Meta 광고를 효과적으로 통합하기 위한 모든 기술적, 규제적 요구사항을 다룹니다. 특히 한국 시장의 개인정보보호법(PIPA) 준수와 iOS 14+ 환경에서의 추적 정확도 향상에 중점을 두었습니다.
 
 ## Meta 광고 플랫폼의 진화와 현재 구조
 
@@ -10,7 +10,7 @@ Meta Business Suite는 2024년을 기점으로 Facebook Business Manager의 기�
 
 ## 안정적인 인증 체계 구축하기
 
-올애드와 같은 광고 통합 플랫폼에서는 **System User Access Token**을 사용하는 것이 필수입니다. 일반 사용자 토큰은 최대 60일의 유효기간을 가지지만, System User Token은 무기한 유효하여 서비스 안정성을 보장합니다. OAuth 2.0 Authorization Code Flow를 통해 초기 인증을 진행한 후, Business Portfolio에서 System User를 생성하고 필요한 권한(`ads_management`, `ads_read`, `business_management`)을 부여합니다.
+Sivera와 같은 광고 통합 플랫폼에서는 **System User Access Token**을 사용하는 것이 필수입니다. 일반 사용자 토큰은 최대 60일의 유효기간을 가지지만, System User Token은 무기한 유효하여 서비스 안정성을 보장합니다. OAuth 2.0 Authorization Code Flow를 통해 초기 인증을 진행한 후, Business Portfolio에서 System User를 생성하고 필요한 권한(`ads_management`, `ads_read`, `business_management`)을 부여합니다.
 
 Facebook Login for Business는 `config_id` 기반의 강화된 보안을 제공하며, 비즈니스 계정 관리에 최적화되어 있습니다. **App Review 프로세스**는 Advanced Access 권한 획득을 위해 필수이며, 비즈니스 인증과 함께 7-14일의 심사 기간이 소요됩니다. 심사 시 명확한 사용 사례 설명과 완성도 높은 데모 영상이 승인률을 높이는 핵심입니다.
 
@@ -44,7 +44,7 @@ const createCampaign = async (adAccountId, campaignData) => {
 
 ## 개인정보 보호 규정 준수의 중요성
 
-2024년 Meta는 한국에서 **약 98만명의 민감정보를 무단 수집**하여 21.6억원의 과징금을 부과받았습니다. 이는 종교, 정치적 견해 등의 민감정보를 별도 동의 없이 광고 타겟팅에 활용했기 때문입니다. 올애드 플랫폼은 한국 개인정보보호법(PIPA)의 민감정보 처리 금지 원칙을 엄격히 준수해야 하며, 수집 목적 달성 시 즉시 데이터를 삭제하는 시스템을 구축해야 합니다.
+2024년 Meta는 한국에서 **약 98만명의 민감정보를 무단 수집**하여 21.6억원의 과징금을 부과받았습니다. 이는 종교, 정치적 견해 등의 민감정보를 별도 동의 없이 광고 타겟팅에 활용했기 때문입니다. Sivera 플랫폼은 한국 개인정보보호법(PIPA)의 민감정보 처리 금지 원칙을 엄격히 준수해야 하며, 수집 목적 달성 시 즉시 데이터를 삭제하는 시스템을 구축해야 합니다.
 
 GDPR 준수를 위해서는 **명시적 동의 획득**과 **데이터 최소화 원칙**을 따라야 합니다. 유럽 법원(CJEU)은 광고 타겟팅용 개인데이터에 명확한 보존 기간 설정을 요구하고 있으며, Meta는 이미 EU에서 12억 유로의 과징금을 부과받은 바 있습니다. Consent Management Platform(CMP)을 도입하여 동의 관리를 자동화하고, 사용자가 언제든 동의를 철회할 수 있는 시스템을 구축하는 것이 필수입니다.
 

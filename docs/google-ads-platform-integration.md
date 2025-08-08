@@ -2,7 +2,7 @@
 
 ## 개요
 
-All-AD는 Google Ads API를 통해 구글 광고 플랫폼과의 완전한 통합(integration)을 제공합니다. 이 문서는 Google Ads API의 주요 기능과 All-AD에서의 구현 방법을 설명합니다.
+Sivera는 Google Ads API를 통해 구글 광고 플랫폼과의 완전한 통합(integration)을 제공합니다. 이 문서는 Google Ads API의 주요 기능과 Sivera에서의 구현 방법을 설명합니다.
 
 ## 목차
 
@@ -17,7 +17,7 @@ All-AD는 Google Ads API를 통해 구글 광고 플랫폼과의 완전한 통�
 
 ### 1. 클라이언트 초기화
 
-All-AD는 Google Ads API 클라이언트를 사용하여 플랫폼과 통신합니다:
+Sivera는 Google Ads API 클라이언트를 사용하여 플랫폼과 통신합니다:
 
 ```typescript
 // services/google-ads/core/google-ads-oauth-client.ts
@@ -25,7 +25,7 @@ export class GoogleAdsOAuthClient {
   private client: GoogleAdsApi | null = null;
 
   private async initializeClient() {
-    const config = await getAllAdOAuthConfig("google");
+    const config = await getSiveraOAuthConfig("google");
 
     this.client = new GoogleAdsApi({
       client_id: config.clientId,
@@ -59,7 +59,7 @@ private async getAuthenticatedCustomer(customerId?: string): Promise<Customer> {
 
 ### 1. OAuth 플로우
 
-All-AD는 간소화된 OAuth 플로우를 제공합니다:
+Sivera는 간소화된 OAuth 플로우를 제공합니다:
 
 ```typescript
 // app/api/auth/google-ads/route.ts

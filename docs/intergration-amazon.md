@@ -582,7 +582,7 @@ export const getCampaigns = unstable_cache(
 );
 ```
 
-### 7.4 올애드 플랫폼 통합 패턴
+### 7.4 Sivera 플랫폼 통합 패턴
 
 ```typescript
 // 통합 인터페이스

@@ -1,6 +1,6 @@
-# All-AD - 통합 광고 관리 플랫폼
+# Sivera - 통합 광고 관리 플랫폼
 
-All-AD는 여러 광고 플랫폼(Facebook, Google, Kakao, Naver, Coupang)을 하나의 대시보드에서 통합 관리할 수 있는 차세대 광고 관리 솔루션입니다.
+Sivera는 여러 광고 플랫폼(Facebook, Google, Kakao, Naver, Coupang)을 하나의 대시보드에서 통합 관리할 수 있는 차세대 광고 관리 솔루션입니다.
 
 ## 📋 목차
 
@@ -60,7 +60,7 @@ All-AD는 여러 광고 플랫폼(Facebook, Google, Kakao, Naver, Coupang)을 �
 ## 📁 프로젝트 구조
 
 ```
-all-ad/
+sivera/
 ├── app/                         # Next.js App Router
 │   ├── (auth)/                 # 인증 관련 라우트
 │   ├── (private)/              # 로그인 필수 라우트
@@ -136,7 +136,7 @@ REDIS_URL=your_redis_url
 ```bash
 # 저장소 클론
 git clone <repository-url>
-cd all-ad
+cd sivera
 
 # 의존성 설치 (Pre-commit hooks 자동 설정됨)
 pnpm install
@@ -250,8 +250,8 @@ supabase db push
 1. **저장소 포크 및 클론**
 
    ```bash
-   git clone https://github.com/YOUR_USERNAME/all-ad.git
-   cd all-ad
+   git clone https://github.com/YOUR_USERNAME/sivera.git
+   cd sivera
    pnpm install
    ```
 
@@ -328,5 +328,5 @@ MIT License - 자세한 내용은 [LICENSE](LICENSE) 파일을 참조하세요.
 
 ## 📞 문의
 
-- Email: support@all-ad.com / sivera@sivera.app
-- Website: https://all-ad.com / https://sivera.app
+- Email: sivera@sivera.app
+- Website: https://sivera.app

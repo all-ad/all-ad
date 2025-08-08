@@ -123,7 +123,7 @@ export async function inviteTeamMemberAction(email: string, role: UserRole) {
     const teamName = team?.name || "Your Team";
 
     // Generate email content
-    const emailSubject = `You're invited to join ${teamName} on AllAd!`;
+    const emailSubject = `You're invited to join ${teamName} on Sivera!`;
     const emailHtml = getTeamInvitationEmailTemplate({
       inviterName,
       teamName,

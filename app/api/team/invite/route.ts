@@ -39,7 +39,7 @@ export async function POST(request: NextRequest) {
     // Prepare email content using template
     const emailContent = {
       to: email,
-      subject: `${teamName} 팀에 초대되었습니다 - AllAd`,
+      subject: `${teamName} 팀에 초대되었습니다 - Sivera`,
       html: getTeamInvitationEmailTemplate({
         inviterName,
         teamName,
