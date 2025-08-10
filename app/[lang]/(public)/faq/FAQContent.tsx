@@ -213,19 +213,16 @@ export default function FAQContent() {
                   }
                 >
                   <div className="px-2 pb-2 whitespace-pre-wrap">
-                    {item.answer.includes("sivera@sivera.app") ||
-                    item.answer.includes("allofadvertisements@gmail.com") ? (
+                    {item.answer.includes("sivera@sivera.app") || false ? (
                       <span>
-                        {item.answer.split("sivera@sivera.app")[0] ||
-                          item.answer.split("allofadvertisements@gmail.com")[0]}
+                        {item.answer.split("sivera@sivera.app")[0] || ""}
                         <a
                           className="text-primary hover:underline"
                           href="mailto:sivera@sivera.app"
                         >
                           sivera@sivera.app
                         </a>
-                        {item.answer.split("sivera@sivera.app")[1] ||
-                          item.answer.split("allofadvertisements@gmail.com")[1]}
+                        {item.answer.split("sivera@sivera.app")[1] || ""}
                       </span>
                     ) : (
                       item.answer

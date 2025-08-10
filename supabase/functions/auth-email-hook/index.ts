@@ -221,7 +221,7 @@ Deno.serve(async (req: Request) => {
 
     // Send email via Resend
     const emailData = {
-      from: "Sivera <noreply@sivera.app>",
+      from: "Sivera <noreply@sivera.app>',",
       to: [payload.user.email],
       subject: emailContent.subject,
       html: emailContent.html,

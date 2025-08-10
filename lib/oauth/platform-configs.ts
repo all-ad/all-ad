@@ -103,7 +103,7 @@ export async function getOAuthConfigWithCredentials(
 }
 
 // Get OAuth config with Sivera's own credentials (for simplified OAuth)
-export async function getSiveraOAuthConfig(
+export async function getOAuthConfig(
   platform: string,
 ): Promise<OAuthConfig | null> {
   const baseConfig =

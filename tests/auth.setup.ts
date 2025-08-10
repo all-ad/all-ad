@@ -35,6 +35,13 @@ setup("authenticate", async ({ page }) => {
   }
 
   // Save storage state
+  await page.getByTestId("login-submit").click();
+
+  // Wait for the main page to load after login.
+  // This is a common pattern to ensure login was successful.
+  await expect(page).toHaveURL(/.*dashboard/);
+  await expect(page.getByRole("heading", { name: /dashboard/i })).toBeVisible();
+
   await page.context().storageState({ path: authFile });
 
   console.log("Test authentication setup completed");

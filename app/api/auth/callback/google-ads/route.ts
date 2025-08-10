@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
 import { createClient } from "@/utils/supabase/server";
-import { getSiveraOAuthConfig } from "@/lib/oauth/platform-configs";
+import { getOAuthConfig } from "@/lib/oauth/platform-configs";
 import log from "@/utils/logger";
 
 interface OAuthConfig {
@@ -122,7 +122,7 @@ export async function GET(request: NextRequest) {
     await supabase.from("oauth_states").delete().eq("state", state);
 
     // Get OAuth config
-    const oauthConfig = await getSiveraOAuthConfig("google");
+    const oauthConfig = await getOAuthConfig("google");
 
     if (!oauthConfig) {
       throw new Error("OAuth configuration not found");

@@ -133,10 +133,8 @@ test.describe("Login functionality", () => {
   test("로고 클릭 시 홈페이지로 이동", async ({ page, pushAnnotation }) => {
     pushAnnotation(AnnotationType.SUB_CATEGORY2, "페이지 네비게이션");
 
-    // 로고 찾기 - Navbar에 있는 "A.ll + Ad" 텍스트
-    const logoLink = page
-      .locator('a[href="/"]')
-      .filter({ hasText: "A.ll + Ad" });
+    // 로고 찾기 - Navbar에 있는 "Sivera" 텍스트
+    const logoLink = page.locator('a[href="/"]').filter({ hasText: "Sivera" });
     await expect(logoLink).toBeVisible();
     await logoLink.click();
 

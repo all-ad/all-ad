@@ -15,7 +15,7 @@ export const PAGE_PATH = {
 } as const;
 
 export const siteConfig: SiteConfig = {
-  name: "A.ll + Ad",
+  name: "Sivera",
   description: "All in one advertising solution - 모든 광고를 하나로",
   navItems: [
     {

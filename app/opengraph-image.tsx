@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
 
-export const alt = "A.ll + Ad - 모든 광고를 하나로";
+export const alt = "Sivera - 모든 광고를 하나로";
 export const size = {
   width: 1200,
   height: 630,
@@ -30,7 +30,7 @@ export default async function Image() {
         <div
           style={{ fontSize: "72px", fontWeight: "bold", marginBottom: "20px" }}
         >
-          A.ll + Ad
+          Sivera
         </div>
         <div style={{ fontSize: "36px", opacity: 0.8, textAlign: "center" }}>
           모든 광고를 하나로
