@@ -19,7 +19,10 @@
       "Bash(TEST_USER_ID=sivera@sivera.app TEST_USER_PASSWORD=qweqwe123 BASE_URL=http://localhost:3001 pnpm test:fast --grep \"로고.*클릭\" --reporter=line)",
       "Bash(BASE_URL=http://localhost:3001 pnpm test:fast --grep \"FAQ.*page.*loads\" --reporter=line)",
       "Bash(gh pr checkout:*)",
-      "Bash(gh pr view:*)"
+      "Bash(gh pr view:*)",
+      "Bash(node:*)",
+      "Bash(grep:*)",
+      "Bash(git show:*)"
     ],
     "deny": []
   }
