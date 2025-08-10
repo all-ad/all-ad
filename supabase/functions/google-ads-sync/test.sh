@@ -6,7 +6,9 @@ echo "Testing Google Ads sync Edge Function..."
 
 # First, let's test if the function can be loaded without errors
 echo "1. Testing function syntax..."
-cd "$(dirname "$(dirname "$(dirname "$0")")")"
+cd /Users/2309-n0015/Code/Project/sivera
+# Alternative dynamic approach (works on any machine):
+# cd "$(dirname "$(dirname "$(dirname "$0")")")"
 supabase functions serve google-ads-sync --no-verify-jwt &
 SERVER_PID=$!
 

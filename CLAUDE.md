@@ -16,8 +16,12 @@ Next.js 15 multi-tenant advertising platform integrating multiple ad platforms (
 ### Working Directory
 
 ```
-/path/to/all-ad
+/Users/songjunhoe/sivera
 ```
+
+<!-- Alternative: For team consistency when cloning to different machines, consider:
+     /path/to/all-ad (generic path that works regardless of user)
+-->
 
 ### Core Guidelines
 
