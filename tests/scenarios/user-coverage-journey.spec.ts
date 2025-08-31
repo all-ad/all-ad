@@ -20,7 +20,7 @@ test.describe("User Journey with Coverage Collection", () => {
 
       // 1. Landing page coverage
       await page.goto("/");
-      await expect(page).toHaveTitle(/All-Ad/);
+      await expect(page).toHaveTitle(/Sivera/);
 
       // Test landing page components
       const heroSection = page.locator('[data-testid="hero-section"]');
