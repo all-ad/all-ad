@@ -3,10 +3,11 @@
 import { revalidatePath } from "next/cache";
 
 import { createClient } from "@/utils/supabase/server";
+import { createClient as createServiceClient } from "@supabase/supabase-js";
 import log from "@/utils/logger";
 import { UserRole } from "@/types";
 import { createTeamForUser } from "@/lib/data/teams";
-import { getTeamInvitationEmailTemplate } from "@/utils/email-templates";
+// Note: No longer using custom email templates - Supabase Auth handles email sending
 
 export async function inviteTeamMemberAction(email: string, role: UserRole) {
   try {
@@ -122,33 +123,41 @@ export async function inviteTeamMemberAction(email: string, role: UserRole) {
       inviterProfile?.full_name || inviterProfile?.email || "Someone";
     const teamName = team?.name || "Your Team";
 
-    // Generate email content
-    const emailSubject = `You're invited to join ${teamName} on AllAd!`;
-    const emailHtml = getTeamInvitationEmailTemplate({
-      inviterName,
-      teamName,
-      invitationLink: inviteUrl,
-    });
-
-    // Send email via Supabase Edge Function
-    const { data: edgeFunctionResponse, error: edgeFunctionError } =
-      await supabase.functions.invoke("resend", {
-        body: {
-          to: email,
-          subject: emailSubject,
-          html: emailHtml,
+    // Create admin client for sending invitations
+    const supabaseAdmin = createServiceClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.SUPABASE_SERVICE_ROLE_KEY!,
+      {
+        auth: {
+          autoRefreshToken: false,
+          persistSession: false,
         },
+      },
+    );
+
+    // Send invitation email via Supabase Auth (uses configured email provider)
+    // Supabase will handle sending the email with custom template data
+    const { data: inviteResponse, error: inviteError } =
+      await supabaseAdmin.auth.admin.inviteUserByEmail(email, {
+        data: {
+          team_id: teamId,
+          invited_by: user.id,
+          inviter_name: inviterName,
+          team_name: teamName,
+          role: role === "master" ? "viewer" : role,
+        },
+        redirectTo: inviteUrl,
       });
 
-    if (edgeFunctionError) {
+    if (inviteError) {
       log.error(
-        "Failed to send invitation email via Edge Function",
-        edgeFunctionError,
+        "Failed to send invitation email via Supabase Auth",
+        inviteError,
       );
     } else {
-      log.info("Invitation email sent successfully via Edge Function", {
+      log.info("Invitation email sent successfully via Supabase Auth", {
         email,
-        response: edgeFunctionResponse,
+        response: inviteResponse,
       });
     }
 
