@@ -12,7 +12,7 @@ export default function CookiePolicyContent() {
     <div className="space-y-8">
       <div className="text-center space-y-4">
         <h1 className="text-4xl font-bold text-default-900">
-          All-AD 쿠키 정책
+          Sivera 쿠키 정책
         </h1>
         <Chip
           className="font-medium"
@@ -48,7 +48,7 @@ export default function CookiePolicyContent() {
                 className="hover:text-primary transition-colors"
                 href="#why-use-cookies"
               >
-                All-AD는 쿠키를 왜 사용하나요?
+                Sivera는 쿠키를 왜 사용하나요?
               </a>
             </li>
             <li>
@@ -56,7 +56,7 @@ export default function CookiePolicyContent() {
                 className="hover:text-primary transition-colors"
                 href="#cookie-types"
               >
-                All-AD가 사용하는 쿠키의 종류
+                Sivera가 사용하는 쿠키의 종류
               </a>
             </li>
             <li>
@@ -112,16 +112,16 @@ export default function CookiePolicyContent() {
           </CardBody>
         </Card>
 
-        {/* All-AD는 쿠키를 왜 사용하나요? */}
+        {/* Sivera는 쿠키를 왜 사용하나요? */}
         <Card id="why-use-cookies">
           <CardHeader>
             <h2 className="text-2xl font-semibold">
-              All-AD는 쿠키를 왜 사용하나요?
+              Sivera는 쿠키를 왜 사용하나요?
             </h2>
           </CardHeader>
           <CardBody className="space-y-4">
             <p className="text-default-700 leading-relaxed">
-              주식회사 올애드(이하 &quot;회사&quot;)는 All-AD 서비스(이하
+              주식회사 시베라(이하 &quot;회사&quot;)는 Sivera 서비스(이하
               &quot;서비스&quot;)의 원활한 운영과 사용자 경험 향상, 그리고
               서비스 개선을 위한 분석 목적으로 쿠키를 사용합니다. 구체적인 사용
               목적은 다음과 같습니다.
@@ -161,11 +161,11 @@ export default function CookiePolicyContent() {
           </CardBody>
         </Card>
 
-        {/* All-AD가 사용하는 쿠키의 종류 */}
+        {/* Sivera가 사용하는 쿠키의 종류 */}
         <Card id="cookie-types">
           <CardHeader>
             <h2 className="text-2xl font-semibold">
-              All-AD가 사용하는 쿠키의 종류
+              Sivera가 사용하는 쿠키의 종류
             </h2>
           </CardHeader>
           <CardBody className="space-y-4">

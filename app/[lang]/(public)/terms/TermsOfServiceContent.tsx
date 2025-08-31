@@ -200,7 +200,7 @@ export default function TermsOfServiceContent() {
           <CardBody>
             <p className="text-default-700 leading-relaxed">
               본 약관은 주식회사 시베라(이하 &quot;회사&quot;라 합니다)가
-              제공하는 All-AD 서비스 및 관련 제반 서비스(이하
+              제공하는 Sivera 서비스 및 관련 제반 서비스(이하
               &quot;서비스&quot;라 합니다)의 이용과 관련하여 회사와 회원 간의
               권리, 의무 및 책임사항, 기타 필요한 사항을 규정함을 목적으로
               합니다.
