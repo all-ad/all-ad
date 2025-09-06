@@ -26,7 +26,6 @@
     "gen:type:supabase:local": "npx supabase gen types typescript --local > types/supabase.types.ts",
     "db:migrate": "npx supabase migration up --linked --include-all",
     "db:migrate:local": "npx supabase migration up --local --include-all",
-    "func:deploy": "npx supabase functions deploy  resend --project-ref dtttnnwrzbtjzjzmpvaf ",
     "prepare": "husky",
     "test:component": "NODE_ENV=test playwright test -c playwright-ct.config.ts --reporter=list",
     "test:integration": "NODE_ENV=test playwright test --project=integration-tests --reporter=list",

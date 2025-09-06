@@ -10,7 +10,10 @@ import { Team, TeamMemberWithProfile, TeamInvitation, UserRole } from "@/types";
 import { createClient } from "@/utils/supabase/client";
 import log from "@/utils/logger";
 import { TeamService } from "@/services/team/team.service";
-import { syncAllPlatformDataAction } from "@/app/[lang]/(private)/team/actions";
+import {
+  inviteTeamMemberAction,
+  syncAllPlatformDataAction,
+} from "@/app/[lang]/(private)/team/actions";
 
 // Type definitions
 
@@ -165,8 +168,7 @@ export const createTeamActionsSlice: StateCreator<
   inviteTeamMember: async (email, role) => {
     set({ isLoading: true, error: null });
     try {
-      const teamService = new TeamService();
-      const result = await teamService.inviteTeamMember(email, role);
+      const result = await inviteTeamMemberAction(email, role);
 
       if (result?.error) {
         throw new Error(result.error);
@@ -178,6 +180,8 @@ export const createTeamActionsSlice: StateCreator<
     } catch (error) {
       log.error("Failed to invite team member", { error });
       set({ error: (error as Error).message, isLoading: false });
+      // Rethrow the error to be caught by the component
+      throw error;
     }
   },
 
