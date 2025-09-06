@@ -91,7 +91,7 @@ export async function inviteTeamMemberAction(email: string, role: UserRole) {
           role: role === "master" ? "viewer" : role, // Can't invite as master
           invited_by: user.id,
         },
-        redirectTo: `${process.env.NEXT_PUBLIC_SITE_URL}/dashboard`,
+        redirectTo: `${process.env.NEXT_PUBLIC_SITE_URL}/accept-invite`,
       });
 
     if (inviteError) {
