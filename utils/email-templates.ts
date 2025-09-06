@@ -1,5 +1,5 @@
 /**
- * Email templates for the AllAd platform
+ * Email templates for the sivera platform
  */
 
 import { EmailTemplateData } from "@/types/email";
@@ -81,14 +81,14 @@ export function getTeamInvitationEmailTemplate(
     <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Team Invitation - AllAd</title>
+      <title>Team Invitation - sivera</title>
     </head>
     <body style="margin: 0; padding: 0; background-color: #f3f4f6;">
       <div style="${baseStyles.container}">
         <!-- Header -->
         <div style="${baseStyles.header}">
-          <a href="${process.env.NEXT_PUBLIC_SITE_URL || "https://all-ad.in"}" style="${baseStyles.logo}">
-            AllAd
+          <a href="${process.env.NEXT_PUBLIC_SITE_URL || "https://sivera.in"}" style="${baseStyles.logo}">
+            sivera
           </a>
         </div>
 
@@ -106,7 +106,7 @@ export function getTeamInvitationEmailTemplate(
         </p>
         
         <p style="${baseStyles.paragraph}">
-          AllAd는 여러 광고 플랫폼을 하나의 대시보드에서 관리할 수 있는 
+          sivera는 여러 광고 플랫폼을 하나의 대시보드에서 관리할 수 있는 
           통합 광고 관리 솔루션입니다. 팀원들과 함께 효율적으로 
           광고 캠페인을 관리하고 성과를 분석할 수 있습니다.
         </p>
@@ -136,7 +136,7 @@ export function getTeamInvitationEmailTemplate(
             이 초대를 받을 예정이 아니었다면, 이 이메일을 무시하셔도 됩니다.
           </p>
           <p style="margin: 8px 0;">
-            © ${new Date().getFullYear()} AllAd. All rights reserved.
+            © ${new Date().getFullYear()} sivera. All rights reserved.
           </p>
         </div>
       </div>
@@ -157,19 +157,19 @@ export function getWelcomeEmailTemplate(data: {
     <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Welcome to AllAd</title>
+      <title>Welcome to sivera</title>
     </head>
     <body style="margin: 0; padding: 0; background-color: #f3f4f6;">
       <div style="${baseStyles.container}">
         <!-- Header -->
         <div style="${baseStyles.header}">
-          <a href="${process.env.NEXT_PUBLIC_SITE_URL || "https://all-ad.in"}" style="${baseStyles.logo}">
-            AllAd
+          <a href="${process.env.NEXT_PUBLIC_SITE_URL || "https://sivera.in"}" style="${baseStyles.logo}">
+            sivera
           </a>
         </div>
 
         <!-- Content -->
-        <h1 style="${baseStyles.title}">AllAd에 오신 것을 환영합니다!</h1>
+        <h1 style="${baseStyles.title}">sivera에 오신 것을 환영합니다!</h1>
         
         <p style="${baseStyles.paragraph}">
           안녕하세요 ${userName}님,
@@ -198,7 +198,7 @@ export function getWelcomeEmailTemplate(data: {
 
         <!-- CTA Button -->
         <div style="${baseStyles.buttonContainer}">
-          <a href="${process.env.NEXT_PUBLIC_SITE_URL || "https://all-ad.in"}/dashboard" style="${baseStyles.button}">
+          <a href="${process.env.NEXT_PUBLIC_SITE_URL || "https://sivera.in"}/dashboard" style="${baseStyles.button}">
             대시보드로 이동
           </a>
         </div>
@@ -209,7 +209,7 @@ export function getWelcomeEmailTemplate(data: {
             도움이 필요하시면 언제든지 문의해주세요.
           </p>
           <p style="margin: 8px 0;">
-            © ${new Date().getFullYear()} AllAd. All rights reserved.
+            © ${new Date().getFullYear()} sivera. All rights reserved.
           </p>
         </div>
       </div>
@@ -229,14 +229,14 @@ export function getPasswordResetEmailTemplate(data: {
     <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Password Reset - AllAd</title>
+      <title>Password Reset - sivera</title>
     </head>
     <body style="margin: 0; padding: 0; background-color: #f3f4f6;">
       <div style="${baseStyles.container}">
         <!-- Header -->
         <div style="${baseStyles.header}">
-          <a href="${process.env.NEXT_PUBLIC_SITE_URL || "https://all-ad.in"}" style="${baseStyles.logo}">
-            AllAd
+          <a href="${process.env.NEXT_PUBLIC_SITE_URL || "https://sivera.in"}" style="${baseStyles.logo}">
+            sivera
           </a>
         </div>
 
@@ -274,7 +274,7 @@ export function getPasswordResetEmailTemplate(data: {
             보안을 위해 이 이메일의 링크를 다른 사람과 공유하지 마세요.
           </p>
           <p style="margin: 8px 0;">
-            © ${new Date().getFullYear()} AllAd. All rights reserved.
+            © ${new Date().getFullYear()} sivera. All rights reserved.
           </p>
         </div>
       </div>

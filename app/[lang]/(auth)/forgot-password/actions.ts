@@ -35,7 +35,7 @@ export async function resetPassword(
 
   try {
     // Get base URL for redirect
-    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://all-ad.in";
+    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://sivera.in";
 
     const { error } = await supabase.auth.resetPasswordForEmail(email, {
       redirectTo: `${baseUrl}/auth/callback?next=/reset-password`,
