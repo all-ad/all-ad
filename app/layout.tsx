@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     telephone: false,
   },
   metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL || "https://sivera.app",
+    process.env.NEXT_PUBLIC_SITE_URL || "https://Sivera.app",
   ),
   alternates: {
     canonical: "/",
@@ -70,7 +70,7 @@ export const metadata: Metadata = {
     title: siteConfig.name,
     description: siteConfig.description,
     images: ["/og-image.png"],
-    creator: "@sivera",
+    creator: "@Sivera",
   },
   robots: {
     index: true,

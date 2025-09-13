@@ -1,13 +1,20 @@
 "use server";
 
+import { redirect } from "next/navigation";
 import { createClient } from "@/utils/supabase/server";
 import { log } from "@/utils/logger";
-import { ForgotPasswordState } from "@/types/auth.types";
 
-export type { ForgotPasswordState };
+// Define the state type directly in the action file to avoid import issues.
+export type ForgotPasswordState = {
+  errors?: {
+    email?: string;
+    general?: string;
+  };
+  success?: boolean;
+};
 
 export async function resetPassword(
-  prevState: ForgotPasswordState,
+  prevState: ForgotPasswordState | null,
   formData: FormData,
 ): Promise<ForgotPasswordState> {
   const supabase = await createClient();
@@ -35,10 +42,10 @@ export async function resetPassword(
 
   try {
     // Get base URL for redirect
-    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://all-ad.in";
+    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://Sivera.app";
 
     const { error } = await supabase.auth.resetPasswordForEmail(email, {
-      redirectTo: `${baseUrl}/auth/callback?next=/reset-password`,
+      redirectTo: `${baseUrl}/reset-password`,
     });
 
     if (error) {
@@ -54,20 +61,12 @@ export async function resetPassword(
         };
       }
 
-      if (error.message.includes("User not found")) {
-        // For security, don't reveal if user exists
-        return {
-          success: true,
-          errors: {
-            general: "비밀번호 재설정 링크가 이메일로 전송되었습니다.",
-          },
-        };
-      }
-
+      // For security, don't reveal if a user exists or not.
+      // Always return a success-like message.
       return {
+        success: true,
         errors: {
-          general:
-            "비밀번호 재설정 이메일 전송에 실패했습니다. 잠시 후 다시 시도해주세요.",
+          general: "비밀번호 재설정 링크가 이메일로 전송되었습니다.",
         },
       };
     }

@@ -140,7 +140,7 @@ export class AdService {
       return [];
     }
 
-    const tracer = trace.getTracer("sivera-platform");
+    const tracer = trace.getTracer("Sivera-platform");
 
     return tracer.startActiveSpan(
       `fetch-campaigns-${platform}`,

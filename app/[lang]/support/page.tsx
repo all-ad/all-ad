@@ -32,7 +32,7 @@ export default async function SupportPage({
       icon: <FaEnvelope className="w-8 h-8" />,
       title: dict.support.cards.email.title,
       description: dict.support.cards.email.description,
-      link: "mailto:support@sivera.co.kr",
+      link: "mailto:Sivera@sivera.app",
       linkText: dict.support.cards.email.linkText,
       isExternal: true,
     },

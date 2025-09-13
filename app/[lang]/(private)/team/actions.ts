@@ -1,12 +1,12 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+import { createClient as createAdminClient } from "@supabase/supabase-js";
 
 import { createClient } from "@/utils/supabase/server";
 import log from "@/utils/logger";
 import { UserRole } from "@/types";
 import { createTeamForUser } from "@/lib/data/teams";
-import { getTeamInvitationEmailTemplate } from "@/utils/email-templates";
 
 export async function inviteTeamMemberAction(email: string, role: UserRole) {
   try {
@@ -55,119 +55,83 @@ export async function inviteTeamMemberAction(email: string, role: UserRole) {
       throw new Error("User is already a team member");
     }
 
-    // Check if there's already a pending invitation
+    // Check if there's already a pending invitation for this team
     const { data: existingInvite } = await supabase
       .from("team_invitations")
-      .select("id, token")
+      .select("id")
       .eq("team_id", teamId)
       .eq("email", email)
       .eq("status", "pending")
       .maybeSingle();
-
-    let inviteToken: string;
 
     if (existingInvite) {
       log.info("Resending invitation email to existing invitation", {
         email,
         teamId,
       });
-      inviteToken = existingInvite.token;
-    } else {
-      // Create new invitation
-      const { data: invitation, error: invitationError } = await supabase
+    }
+
+    // Create a separate admin client for the invite
+    const supabaseAdmin = createAdminClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.SUPABASE_SERVICE_ROLE_KEY!,
+      {
+        auth: {
+          autoRefreshToken: false,
+          persistSession: false,
+        },
+      },
+    );
+
+    // Use Supabase's built-in invite functionality with the admin client
+    const { data: inviteData, error: inviteError } =
+      await supabaseAdmin.auth.admin.inviteUserByEmail(email, {
+        data: {
+          team_id: teamId,
+          role: role === "master" ? "viewer" : role, // Can't invite as master
+          invited_by: user.id,
+        },
+        redirectTo: `${process.env.NEXT_PUBLIC_SITE_URL}/accept-invite`,
+      });
+
+    if (inviteError) {
+      log.error("Failed to invite user", inviteError);
+      // Return the raw error message for debugging
+      throw new Error(`메일 발송 실패: ${inviteError.message}`);
+    }
+
+    // If this is a new invitation, create a record for tracking.
+    if (!existingInvite && inviteData.user) {
+      const { error: invitationError } = await supabase
         .from("team_invitations")
         .insert({
           team_id: teamId,
           email,
-          role: role === "master" ? "viewer" : role, // Can't invite as master
+          role: role === "master" ? "viewer" : role,
           invited_by: user.id,
-        })
-        .select("token")
-        .single();
+          user_id: inviteData.user.id,
+          status: "pending",
+        });
 
       if (invitationError) {
-        log.error("Failed to create invitation", invitationError);
-        throw invitationError;
+        log.error(
+          "Failed to create tracking record in team_invitations",
+          invitationError,
+        );
       }
-
-      inviteToken = invitation.token;
     }
 
-    const inviteUrl = `${process.env.NEXT_PUBLIC_SITE_URL}/invite/${inviteToken}`;
-
-    // Fetch inviter's profile and team name for the email
-    const { data: inviterProfile, error: inviterProfileError } = await supabase
-      .from("profiles")
-      .select("full_name, email")
-      .eq("id", user.id)
-      .single();
-
-    if (inviterProfileError) {
-      log.error("Failed to fetch inviter profile", inviterProfileError);
-      throw inviterProfileError;
-    }
-
-    const { data: team, error: teamError } = await supabase
-      .from("teams")
-      .select("name")
-      .eq("id", teamId)
-      .single();
-
-    if (teamError) {
-      log.error("Failed to fetch team name", teamError);
-      throw teamError;
-    }
-
-    const inviterName =
-      inviterProfile?.full_name || inviterProfile?.email || "Someone";
-    const teamName = team?.name || "Your Team";
-
-    // Generate email content
-    const emailSubject = `You're invited to join ${teamName} on AllAd!`;
-    const emailHtml = getTeamInvitationEmailTemplate({
-      inviterName,
-      teamName,
-      invitationLink: inviteUrl,
-    });
-
-    // Send email via Supabase Edge Function
-    const { data: edgeFunctionResponse, error: edgeFunctionError } =
-      await supabase.functions.invoke("resend", {
-        body: {
-          to: email,
-          subject: emailSubject,
-          html: emailHtml,
-        },
-      });
-
-    if (edgeFunctionError) {
-      log.error(
-        "Failed to send invitation email via Edge Function",
-        edgeFunctionError,
-      );
-    } else {
-      log.info("Invitation email sent successfully via Edge Function", {
-        email,
-        response: edgeFunctionResponse,
-      });
-    }
-
-    log.info("Team invitation processed successfully", {
+    log.info("Team invitation email sent successfully via Supabase Auth", {
       email,
       role,
       teamId,
-      token: inviteToken,
-      isResend: !!existingInvite,
     });
 
     revalidatePath("/team");
 
     return {
       success: true,
-      message: existingInvite
-        ? `초대 이메일이 다시 발송되었습니다.`
-        : `초대 링크가 생성되었습니다.`,
-      inviteUrl,
+      message: "초대 이메일이 발송되었습니다.",
     };
   } catch (error) {
     log.error(
