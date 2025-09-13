@@ -1,7 +1,7 @@
 import { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://sivera.app";
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://Sivera.app";
 
   // Base pages
   const staticPages = ["", "/demo", "/pricing", "/support", "/contact"];

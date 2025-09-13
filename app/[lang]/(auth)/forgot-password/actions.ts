@@ -42,7 +42,7 @@ export async function resetPassword(
 
   try {
     // Get base URL for redirect
-    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://sivera.in";
+    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://Sivera.app";
 
     const { error } = await supabase.auth.resetPasswordForEmail(email, {
       redirectTo: `${baseUrl}/reset-password`,

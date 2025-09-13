@@ -123,7 +123,7 @@ export class TeamService {
       const teamName = team?.name || "Your Team";
 
       // Generate email content
-      const emailSubject = `You're invited to join ${teamName} on sivera!`;
+      const emailSubject = `You're invited to join ${teamName} on Sivera!`;
       const emailHtml = getTeamInvitationEmailTemplate({
         inviterName,
         teamName,

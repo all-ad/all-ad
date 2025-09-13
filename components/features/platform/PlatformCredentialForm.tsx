@@ -41,7 +41,7 @@ export function PlatformCredentialForm({
       const submissionValues: Record<string, unknown> = { ...values };
 
       // For OAuth platforms (Google, Facebook, Kakao), we don't need manual credentials anymore
-      // These will be handled by Sivera's OAuth flow
+      // These will be handled by Sivera's
       if (
         platform === "google" ||
         platform === "facebook" ||

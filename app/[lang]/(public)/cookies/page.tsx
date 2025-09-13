@@ -6,10 +6,10 @@ import { Container } from "@/components/layouts/Container";
 const CONTAINER_MAX_4XL = "4xl" as const;
 
 export const metadata: Metadata = {
-  title: "쿠키 정책 | sivera",
+  title: "쿠키 정책 | Sivera",
   description:
-    "sivera 서비스의 쿠키 사용 정책을 확인하세요. 쿠키의 종류, 사용 목적, 관리 방법에 대해 안내합니다.",
-  keywords: ["쿠키 정책", "Cookie Policy", "개인정보", "sivera"],
+    "Sivera 서비스의 쿠키 사용 정책을 확인하세요. 쿠키의 종류, 사용 목적, 관리 방법에 대해 안내합니다.",
+  keywords: ["쿠키 정책", "Cookie Policy", "개인정보", "Sivera"],
 };
 
 export default function CookiePolicyPage() {

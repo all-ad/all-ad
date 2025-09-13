@@ -32,7 +32,7 @@ export default function manifest(): MetadataRoute.Manifest {
     lang: "ko-KR",
     orientation: "portrait-primary",
     scope: "/",
-    id: "sivera",
+    id: "Sivera",
     shortcuts: [
       {
         name: "Dashboard",

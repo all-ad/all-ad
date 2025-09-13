@@ -22,7 +22,7 @@ interface AuthEmailPayload {
 
 const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY");
 const RESEND_API_URL = "https://api.resend.com/emails";
-const SITE_URL = Deno.env.get("SITE_URL") || "https://sivera.in";
+const SITE_URL = Deno.env.get("SITE_URL") || "https://Sivera.app";
 
 async function generatePasswordResetEmail(payload: AuthEmailPayload): Promise<{
   subject: string;
@@ -38,7 +38,7 @@ async function generatePasswordResetEmail(payload: AuthEmailPayload): Promise<{
   htmlContent = htmlContent.replace(/\$\{resetUrl\}/g, resetUrl);
 
   return {
-    subject: "[sivera] 비밀번호 재설정 요청",
+    subject: "[Sivera] 비밀번호 재설정 요청",
     html: htmlContent,
   };
 }
@@ -51,14 +51,14 @@ function generateSignupConfirmationEmail(payload: AuthEmailPayload): {
   const confirmUrl = `${SITE_URL}/auth/callback?token_hash=${email_data.token_hash}&type=signup&next=/dashboard`;
 
   return {
-    subject: "[sivera] 이메일 주소를 확인해주세요",
+    subject: "[Sivera] 이메일 주소를 확인해주세요",
     html: `
       <!DOCTYPE html>
       <html lang="ko">
       <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>이메일 확인 - sivera</title>
+        <title>이메일 확인 - Sivera</title>
         <style>
           body { 
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -118,15 +118,15 @@ function generateSignupConfirmationEmail(payload: AuthEmailPayload): {
       <body>
         <div class="container">
           <div class="header">
-            <a href="${SITE_URL}" class="logo">sivera</a>
+            <a href="${SITE_URL}" class="logo">Sivera</a>
           </div>
           
           <div class="content">
-            <h1 class="title">sivera에 오신 것을 환영합니다! 🎉</h1>
+            <h1 class="title">Sivera에 오신 것을 환영합니다! 🎉</h1>
             
             <p>안녕하세요,</p>
             
-            <p>sivera 계정 생성을 완료하려면 이메일 주소를 확인해주세요.</p>
+            <p>Sivera 계정 생성을 완료하려면 이메일 주소를 확인해주세요.</p>
             
             <div style="text-align: center;">
               <a href="${confirmUrl}" class="button">이메일 주소 확인</a>
@@ -143,8 +143,8 @@ function generateSignupConfirmationEmail(payload: AuthEmailPayload): {
           </div>
           
           <div class="footer">
-            <p>이 메일은 sivera 시스템에서 자동으로 발송되었습니다.</p>
-            <p>© 2025 sivera. All rights reserved.</p>
+            <p>이 메일은 Sivera 시스템에서 자동으로 발송되었습니다.</p>
+            <p>© 2025 Sivera. All rights reserved.</p>
           </div>
         </div>
       </body>
@@ -203,7 +203,7 @@ Deno.serve(async (req: Request) => {
       case "magic_link":
         // For magic link, use similar to signup but different messaging
         emailContent = generateSignupConfirmationEmail(payload);
-        emailContent.subject = "[sivera] 마법 링크로 로그인하세요";
+        emailContent.subject = "[Sivera] 마법 링크로 로그인하세요";
         break;
       default:
         console.warn("Unsupported email type", { type: payload.type });
@@ -221,7 +221,7 @@ Deno.serve(async (req: Request) => {
 
     // Send email via Resend
     const emailData = {
-      from: "sivera <noreply@sivera.in>",
+      from: "Sivera <noreply@sivera.app>",
       to: [payload.user.email],
       subject: emailContent.subject,
       html: emailContent.html,

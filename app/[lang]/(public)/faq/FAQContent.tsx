@@ -28,7 +28,7 @@ const faqData: FAQCategory[] = [
       {
         id: "2",
         question:
-          "Q2: sivera를 사용하면 어떤 점이 좋은가요? / 주요 이점은 무엇인가요?",
+          "Q2: Sivera를 사용하면 어떤 점이 좋은가요? / 주요 이점은 무엇인가요?",
         answer:
           "A2: 여러 광고 플랫폼에 각각 접속하여 데이터를 확인하고 취합하는 번거로움을 크게 줄일 수 있습니다. 모든 광고 성과를 한눈에 비교 분석하여 시간을 절약하고, 통합된 인사이트를 통해 광고 효율을 개선하며, 더 나아가 광고 운영의 자동화(향후 제공 예정)까지 경험하실 수 있습니다.",
       },
@@ -77,7 +77,7 @@ const faqData: FAQCategory[] = [
         id: "9",
         question: "Q9: 계정 연동 시 오류가 발생하면 어떻게 해야 하나요?",
         answer:
-          "A9: '광고 계정 연동/관리' 페이지에서 해당 계정의 오류 상태를 확인하고, 안내되는 오류 메시지 및 해결 가이드를 참고해 주세요. 대부분 API 접근 권한 만료 또는 변경 등의 문제이며, 재인증 절차를 통해 해결될 수 있습니다. 해결이 어려운 경우 고객 지원팀(sivera@sivera.app)에 문의해주시면 신속하게 도와드리겠습니다.",
+          "A9: '광고 계정 연동/관리' 페이지에서 해당 계정의 오류 상태를 확인하고, 안내되는 오류 메시지 및 해결 가이드를 참고해 주세요. 대부분 API 접근 권한 만료 또는 변경 등의 문제이며, 재인증 절차를 통해 해결될 수 있습니다. 해결이 어려운 경우 고객 지원팀(Sivera@sivera.app)에 문의해주시면 신속하게 도와드리겠습니다.",
       },
     ],
   },
@@ -165,13 +165,13 @@ const faqData: FAQCategory[] = [
         id: "20",
         question: "Q20: 서비스 이용 중 문제가 발생하면 어디에 문의해야 하나요?",
         answer:
-          "A20: 서비스 내 '고객 지원' 페이지의 문의하기 양식을 이용하시거나, sivera@sivera.app 으로 문의해주시면 최대한 빠르게 답변드리겠습니다.",
+          "A20: 서비스 내 '고객 지원' 페이지의 문의하기 양식을 이용하시거나, Sivera@sivera.app 으로 문의해주시면 최대한 빠르게 답변드리겠습니다.",
       },
       {
         id: "21",
         question: "Q21: API 키 발급 방법 등 기술적인 가이드가 제공되나요?",
         answer:
-          "A21: 네, '광고 계정 연동 관리' 섹션 내에 각 광고 플랫폼별 API 키 발급 방법이나 sivera 서비스 연동을 위한 권한 설정 방법을 상세히 안내하는 가이드 페이지를 제공합니다.",
+          "A21: 네, '광고 계정 연동 관리' 섹션 내에 각 광고 플랫폼별 API 키 발급 방법이나 Sivera 서비스 연동을 위한 권한 설정 방법을 상세히 안내하는 가이드 페이지를 제공합니다.",
       },
     ],
   },
@@ -214,16 +214,16 @@ export default function FAQContent() {
                   }
                 >
                   <div className="px-2 pb-2 whitespace-pre-wrap">
-                    {item.answer.includes("sivera@sivera.app") ? (
+                    {item.answer.includes("Sivera@sivera.app") ? (
                       <span>
-                        {item.answer.split("sivera@sivera.app")[0]}
+                        {item.answer.split("Sivera@sivera.app")[0]}
                         <a
                           className="text-primary hover:underline"
-                          href="mailto:sivera@sivera.app"
+                          href="mailto:Sivera@sivera.app"
                         >
-                          sivera@sivera.app
+                          Sivera@sivera.app
                         </a>
-                        {item.answer.split("sivera@sivera.app")[1]}
+                        {item.answer.split("Sivera@sivera.app")[1]}
                       </span>
                     ) : (
                       item.answer
